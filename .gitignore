@@ -1,0 +1,6 @@
+.env
+__pycache__/
+flaskapp/__pycache__/
+flaskapp/database.db
+Pipfile
+Pipfile.lock

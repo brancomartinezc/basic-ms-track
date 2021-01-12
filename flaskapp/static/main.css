@@ -1,0 +1,35 @@
+body {
+    background: #211F1D;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 8em;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 17px;
+}
+
+/* IDs */
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5em;
+  background-color: #303030;
+  color: white;
+  padding: 2em;
+}
+
+#welcome{
+  font-size: 100px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+#subtitle{
+  font-size: 30px;
+}
+
+/* FONTS */
+.concert-one{
+  font-family: 'Concert One', cursive;
+  font-size: 40px;
+}
+

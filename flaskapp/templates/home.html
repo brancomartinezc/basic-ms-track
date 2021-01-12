@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row justify-content-center mt-5" id="welcome">WELCOME!</div>
+    <div class="row justify-content-center mt-5" id="subtitle">Keep track of your movies and series. :)</div>
+    
+    {% if not current_user.is_authenticated %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-2"><a class="btn btn-success" href="{{url_for('users.login')}}"><i class="fas fa-sign-in-alt"></i> Log In</a></div>
+            <div class="col-2"><a class="btn btn-info" href="{{url_for('users.signup')}}"><i class="fas fa-user-plus"></i> Sign Up</a></div>
+        </div>
+    {% else %}
+        <div class="row justify-content-center mt-5">
+            <div class="col-2"><a class="btn btn-success" href="{{url_for('watched._watched')}}"><i class="fas fa-check"></i> Watched</a></div>
+            <div class="col-2"><a class="btn btn-info" href="{{url_for('towatch._towatch')}}"><i class="fas fa-list-ul"></i> To Watch</a></div>
+        </div>
+    {% endif %}
+
+{% endblock %}

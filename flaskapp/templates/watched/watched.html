@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- SECTION TITLE -->
+    <div class="row justify-content-center mb-3 concert-one">WATCHED</div>
+
+    <!-- WATCHED LIST -->
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card border-warning">
+                <!-- CARD HEADER -->
+                <div class="card-header border-warning font-weight-bold">
+                    <div class="row">
+                        <div class="col-2 text-center">Category</div>
+                        <div class="col-3 text-center">Name</div>
+                        <div class="col-2 text-center">Year</div>
+                        <div class="col-1 text-center">Stars</div>
+                        <div class="col-2 text-center">Date</div>
+                        <div class="col-2 text-center"><a class="btn btn-warning btn-sm" href="{{ url_for('watched.add_watched') }}"><i class="far fa-plus-square" title="Add new"></i> Add</a></div>
+                    </div>
+                </div>
+                <!-- CARD BODY -->
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for movie_or_series in watched|reverse %}
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col-2">{{ movie_or_series.category }}</div>
+                                <div class="col-3">{{ movie_or_series.name }}</div>
+                                <div class="col-2">{{ movie_or_series.year }}</div>
+                                <div class="col-1">{{ movie_or_series.stars }}</div>
+                                <div class="col-2">{{ movie_or_series.date }}</div>
+                                <div class="col-2"> 
+                                    <a class="btn btn-success btn-sm" href="{{ url_for('watched.edit_watched', id=movie_or_series.id) }}"> <i class="far fa-edit" title="Edit"></i> </a>
+                                    <a class="btn btn-danger btn-sm" href="{{ url_for('watched.delete_watched', id=movie_or_series.id) }}"> <i class="far fa-trash-alt" title="Delete"></i> </a>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

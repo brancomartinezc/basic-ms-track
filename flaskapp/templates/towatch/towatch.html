@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- SECTION TITLE -->
+    <div class="row justify-content-center text-center concert-one">
+        <div class="col-4">TO WATCH</div>
+    </div>
+    <div class="row justify-content-center text-center mb-4 concert-one">
+        <div class="col-4">MOVIES</div>
+        <div class="col-4">SERIES</div>
+    </div>
+
+    <!-- TO WATCH LISTS -->
+    <div class="row justify-content-center">
+        <!-- MOVIES LIST -->
+        <div class="col-md-4">
+            <div class="card border-warning">
+                <!-- CARD HEADER -->
+                <div class="card-header border-warning text-center">
+                    <a class="btn btn-warning btn-sm" href="{{ url_for('towatch.add_towatch') }}"><i class="far fa-plus-square" title="Add new"></i> Add</a>
+                </div>
+                <!-- CARD BODY -->
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for movie in movies_towatch%}
+                        <li class="list-group-item">
+                            <div class="row justify-content-between">
+                                <div>{{ movie.name }}</div>
+                                <div><a class="btn btn-danger btn-sm" href="{{ url_for('towatch.delete_towatch', id=movie.id) }}"> <i class="far fa-trash-alt" title="Delete"></i> </a></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                        
+                </div>
+            </div>
+        </div>
+
+        <!-- SERIES LIST -->
+        <div class="col-md-4">
+            <div class="card border-warning">
+                <!-- CARD HEADER -->
+                <div class="card-header border-warning text-center">
+                    <a class="btn btn-warning btn-sm" href="{{ url_for('towatch.add_towatch') }}"><i class="far fa-plus-square" title="Add new"></i> Add</a>
+                </div>
+                <!-- CARD BODY -->
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for series in series_towatch%}
+                        <li class="list-group-item just">
+                            <div class="row justify-content-between">
+                                <div>{{ series.name }}</div>
+                                <div><a class="btn btn-danger btn-sm" href="{{ url_for('towatch.delete_towatch', id=series.id) }}"> <i class="far fa-trash-alt" title="Delete"></i> </a></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

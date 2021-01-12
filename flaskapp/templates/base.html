@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies & Series</title>
+     <!-- BOOTSTRAP 4 -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
+     <!-- FONT AWESOME -->
+     <script src="https://kit.fontawesome.com/be637d2235.js" crossorigin="anonymous"></script>
+     <!-- GOOGLE FONTS -->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+     <!-- MAIN CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='main.css')}}>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">M&S List</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    {% if current_user.is_authenticated %}
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('watched._watched') }}">Watched</a></li>
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('towatch._towatch') }}">To Watch</a></li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('users.account') }}">Account</a></li>
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('users.login') }}">Login</a></li>
+                            <li class="nav-item-active"><a class="nav-link" href="{{ url_for('users.signup') }}">Signup</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mt-3">
+        <!-- FLASHED MESSAGES -->
+        <div class="row justify-content-center text-center">
+            <div class="col-4">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        <!-- BLOCK CONTENT -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">   
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-4"><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"> GPL License</a>.</div>
+                <div class="col-2"><a class="btn btn-secondary" href="https://github.com/brancomartinezc" target="_blank"> <i class="fab fa-github fa-lg"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

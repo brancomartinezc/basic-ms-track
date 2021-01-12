@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="col-md-4 offset-md-4 myauto">
+            
+        <div class="card">
+            <!-- CARD HEADER -->
+            <div class="card-header text-center">
+                Edit Watched
+            </div>
+            <!-- CARD BODY -->
+            <div class="card-body">
+                <div>
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- CATEGORY -->
+                        <div class="form-group">
+                            {{ form.category.label(class="form-control-label") }}
+
+                            {% if form.category.errors %}
+                                {{ form.category(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.category.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.category(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <!-- NAME -->
+                        <div class="form-group">
+                            {{ form.name.label(class="form-control-label") }}
+                            
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <!-- YEAR -->
+                        <div class="form-group">
+                            {{ form.year.label(class="form-control-label") }}
+                            
+                            {% if form.year.errors %}
+                                {{ form.year(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.year.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.year(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <!-- STARS -->
+                        <div class="form-group">
+                            {{ form.stars.label(class="form-control-label") }}
+                            
+                            {% if form.stars.errors %}
+                                {{ form.stars(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.stars.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.stars(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <!-- DATE -->
+                        <div class="form-group">
+                            {{ form.date.label(class="form-control-label") }}
+                            
+                            {% if form.date.errors %}
+                                {{ form.date(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.date.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.date(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <!-- SUBMIT BUTTON -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-warning btn-block") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}
